@@ -1,5 +1,3 @@
-import React from 'react';
-
 function App() {
   const handleOrder = () => {
     const pesan = "Halo, saya tertarik untuk pesan Mie Ayam Mentah Artisan-nya!";
