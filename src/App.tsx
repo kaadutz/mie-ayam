@@ -1,5 +1,3 @@
-import React from "react";
-
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -198,7 +196,7 @@ const styles = `
 // ✏️ Ganti nomor WA kamu di sini
 const NOMOR_WA = "6281234567890";
 
-function openWA(pesan) {
+function openWA(pesan: string) {
   window.open(
     `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`,
     "_blank"
@@ -214,7 +212,6 @@ const products = [
     emoji: "🍜",
     bgClass: "",
     harga: "Rp 15rb",
-    // ✏️ Ganti src dengan URL foto aslimu
     foto: null,
   },
   {
@@ -291,7 +288,7 @@ export default function App() {
             <button className="mr-btn-primary" onClick={() => openWA("Halo, saya mau order mie artisan!")}>
               Order Sekarang
             </button>
-            <button className="mr-btn-secondary" onClick={() => document.getElementById("produk").scrollIntoView({ behavior: "smooth" })}>
+            <button className="mr-btn-secondary" onClick={() => document.getElementById("produk")?.scrollIntoView({ behavior: "smooth" })}>
               Lihat Produk
             </button>
           </div>
