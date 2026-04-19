@@ -1,3 +1,14 @@
+// 1. Mendefinisikan tipe data agar TypeScript tidak protes
+type Product = {
+  id: number;
+  name: string;
+  harga: string;
+  badge: string;
+  desc: string;
+  tebal: string;
+  isi: string;
+};
+
 const NOMOR_WA = "6281234567890"; // Ganti dengan nomor WA kamu
 
 function openWA(pesan: string) {
@@ -7,8 +18,8 @@ function openWA(pesan: string) {
   );
 }
 
-// Data produk yang sempat terlupa sudah ditambahkan di sini:
-const products = [
+// 2. Memasukkan data produk dengan tipe yang sudah didefinisikan
+const products: Product[] = [
   { 
     id: 1, 
     name: "Mie Keriting Premium", 
@@ -42,7 +53,7 @@ export default function App() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-artisan-krem text-artisan-slate font-sans selection:bg-artisan-green selection:text-white">
       
-      {/* Efek Tekstur Kasat Mata (Linen/Kertas Tipis Vibe) */}
+      {/* Efek Tekstur Kasat Mata */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }}></div>
 
       {/* NAVBAR */}
@@ -78,7 +89,6 @@ export default function App() {
       {/* HERO SECTION */}
       <section id="beranda" className="container mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-16 relative z-10">
         
-        {/* Teks Kiri */}
         <div className="md:w-1/2 flex flex-col items-start animate-fade-in-up">
           <div className="inline-flex items-center gap-2 bg-white/60 border border-artisan-green/30 px-4 py-2 rounded-full text-xs font-bold text-artisan-green tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
@@ -112,17 +122,14 @@ export default function App() {
           </div>
         </div>
 
-        {/* Gambar Kanan (Animasi Float) */}
         <div className="md:w-1/2 relative w-full opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <div className="absolute inset-0 bg-artisan-green/10 rounded-[3rem] transform rotate-3 scale-105 -z-10"></div>
           
           <div className="relative w-full aspect-[4/3] bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white animate-float flex flex-col items-center justify-center text-artisan-slate/30">
-             {/* ✏️ Nanti ganti <div> ini dengan <img src="..." /> dari AI */}
              <svg className="w-16 h-16 mb-4 text-artisan-green/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
              <span className="font-medium text-sm tracking-widest uppercase">Foto Produk AI</span>
           </div>
           
-          {/* Badge Melayang */}
           <div className="absolute -bottom-6 -left-8 bg-white p-4 shadow-xl rounded-2xl border border-gray-100 flex items-center gap-4 hover:scale-110 transition-transform duration-300 cursor-default">
              <div className="w-12 h-12 bg-artisan-krem rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-artisan-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 13l4 4L19 7"></path></svg>
@@ -152,7 +159,8 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((p, index) => (
+          {/* 3. Menambahkan tipe parameter secara eksplisit pada map */}
+          {products.map((p: Product, index: number) => (
             <div key={p.id} className="group flex flex-col bg-white rounded-3xl border border-artisan-brown/10 p-4 shadow-sm hover:shadow-2xl hover:shadow-artisan-green/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="aspect-[4/3] rounded-2xl bg-artisan-krem flex items-center justify-center relative overflow-hidden text-artisan-green/40 mb-4">
                 <svg className="w-20 h-20 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m14 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m14 0H4"></path></svg>
@@ -307,13 +315,11 @@ export default function App() {
       <section className="px-4 py-16 md:px-10 lg:px-20 flex justify-center bg-white border-b border-artisan-brown/10" id="lokasi">
         <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-12 items-center">
           
-          {/* Kotak Peta Lokasi (Diperbarui dengan Maps Google) */}
           <div 
             className="w-full lg:w-1/2 h-80 bg-artisan-krem rounded-3xl overflow-hidden relative border-4 border-white shadow-xl flex items-center justify-center group cursor-pointer bg-cover bg-center"
             style={{ backgroundImage: 'url("https://maps.app.goo.gl/yKs3gzkZURYrkea76")' }}
             onClick={() => window.open('https://maps.app.goo.gl/yKs3gzkZURYrkea76', '_blank')}
           >
-            {/* Overlay Gelap Agar Teks Terbaca */}
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
             
             <div className="absolute inset-0 flex items-center justify-center">
@@ -393,7 +399,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- FOOTER (Diperbarui dengan Alamat Sukabumi) --- */}
+      {/* --- FOOTER --- */}
       <footer className="bg-artisan-brown text-white pt-20 pb-10 px-4 md:px-10 lg:px-20 flex justify-center rounded-t-[3rem]">
         <div className="w-full max-w-[1200px] flex flex-col">
           <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
