@@ -7,6 +7,37 @@ function openWA(pesan: string) {
   );
 }
 
+// Data produk yang sempat terlupa sudah ditambahkan di sini:
+const products = [
+  { 
+    id: 1, 
+    name: "Mie Keriting Premium", 
+    harga: "Rp 16.000", 
+    badge: "Best Seller", 
+    desc: "Tekstur kenyal klasik dengan keriting yang sempurna. Favorit pedagang mie ayam gerobakan.", 
+    tebal: "1.5mm", 
+    isi: "10-12 porsi" 
+  },
+  { 
+    id: 2, 
+    name: "Mie Lebar (Yamin)", 
+    harga: "Rp 17.000", 
+    badge: "Fresh", 
+    desc: "Bentuk pipih lebar, cocok untuk menu Mie Yamin manis atau asin. Tekstur lebih halus dan licin.", 
+    tebal: "3mm", 
+    isi: "10-12 porsi" 
+  },
+  { 
+    id: 3, 
+    name: "Mie Karet Spesial", 
+    harga: "Rp 18.000", 
+    badge: "Unik", 
+    desc: "Diameter tebal, tekstur padat, kenyal dan 'al dente'. Sangat cocok untuk mie ayam kampung.", 
+    tebal: "2.5mm", 
+    isi: "9-10 porsi" 
+  }
+];
+
 export default function App() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-artisan-krem text-artisan-slate font-sans selection:bg-artisan-green selection:text-white">
@@ -18,7 +49,6 @@ export default function App() {
       <nav className="sticky top-0 z-50 bg-artisan-krem/90 backdrop-blur-md border-b border-artisan-brown/10">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer group">
-            {/* Ikon Mangkuk Garis Tipis (Green) */}
             <div className="w-10 h-10 bg-white/50 border border-artisan-green/20 rounded-xl flex items-center justify-center text-artisan-green shadow-sm group-hover:bg-artisan-green group-hover:text-white transition-all duration-300">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
@@ -109,7 +139,7 @@ export default function App() {
       <div className="container mx-auto px-6 py-12">
         <div className="flex items-center gap-6 opacity-60">
           <div className="h-px bg-artisan-brown/20 flex-1"></div>
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-artisan-brown/60">4 Varian Terbaik</span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-artisan-brown/60">Varian Terbaik</span>
           <div className="h-px bg-artisan-brown/20 flex-1"></div>
         </div>
       </div>
@@ -121,27 +151,34 @@ export default function App() {
           <p className="text-artisan-slate/70 max-w-lg mx-auto">Dibuat segar setiap hari, siap dimasak dalam 2 menit. Kenyal, gurih, dan pastinya sehat.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((p, index) => (
-            <div key={p.id} className="group bg-white rounded-3xl border border-artisan-brown/10 p-3 shadow-sm hover:shadow-2xl hover:shadow-artisan-green/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="aspect-square rounded-2xl bg-artisan-krem flex items-center justify-center relative overflow-hidden text-artisan-green/40">
-                <svg className="w-16 h-16 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m14 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m14 0H4"></path></svg>
-                <div className="absolute top-3 right-3 bg-white/80 backdrop-blur border border-artisan-green/20 text-[10px] font-bold text-artisan-green px-3 py-1 rounded-full uppercase tracking-wider">
-                  Fresh
-                </div>
+            <div key={p.id} className="group flex flex-col bg-white rounded-3xl border border-artisan-brown/10 p-4 shadow-sm hover:shadow-2xl hover:shadow-artisan-green/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="aspect-[4/3] rounded-2xl bg-artisan-krem flex items-center justify-center relative overflow-hidden text-artisan-green/40 mb-4">
+                <svg className="w-20 h-20 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m14 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m14 0H4"></path></svg>
+                {p.badge && (
+                  <div className="absolute top-4 right-4 bg-white/80 backdrop-blur border border-artisan-green/20 text-[10px] font-bold text-artisan-green px-3 py-1.5 rounded-full uppercase tracking-wider">
+                    {p.badge}
+                  </div>
+                )}
               </div>
-              <div className="p-5">
+              <div className="flex flex-col flex-grow px-2">
                 <h3 className="font-serif text-2xl font-bold text-artisan-brown mb-2 group-hover:text-artisan-green transition-colors">{p.name}</h3>
-                <p className="text-sm text-artisan-slate/70 line-clamp-2 mb-6">{p.desc}</p>
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-lg text-artisan-green">{p.harga}</div>
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); openWA(`Halo, saya mau order ${p.name}!`); }}
-                    className="w-10 h-10 rounded-full bg-artisan-krem border border-artisan-brown/10 flex items-center justify-center text-artisan-brown group-hover:bg-artisan-brown group-hover:text-white transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v16m8-8H4"></path></svg>
-                  </button>
+                <p className="text-artisan-green font-bold text-xl mb-3">{p.harga}<span className="text-sm font-normal text-artisan-slate/60">/kg</span></p>
+                <p className="text-sm text-artisan-slate/70 line-clamp-2 mb-5 flex-grow">{p.desc}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1.5 bg-artisan-krem/50 border border-artisan-brown/10 text-xs text-artisan-brown rounded-lg font-semibold">Tebal: {p.tebal}</span>
+                  <span className="px-3 py-1.5 bg-artisan-krem/50 border border-artisan-brown/10 text-xs text-artisan-brown rounded-lg font-semibold">Isi: {p.isi}</span>
                 </div>
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); openWA(`Halo, saya mau order ${p.name}!`); }}
+                  className="w-full h-12 rounded-xl border-2 border-artisan-brown text-artisan-brown font-bold group-hover:bg-artisan-brown group-hover:text-white transition-all flex items-center justify-center gap-2"
+                >
+                  Pesan Sampel
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
               </div>
             </div>
           ))}
@@ -254,7 +291,7 @@ export default function App() {
               <div className="flex justify-between items-center py-5">
                 <div>
                   <p className="font-bold text-artisan-brown text-lg">Paket Partai Besar</p>
-                  <p className="text-sm text-artisan-slate/60 mt-1">Pembelian &gt; 50kg</p>
+                  <p className="text-sm text-artisan-slate/60 mt-1">Pembelian > 50kg</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-xl text-artisan-brown">Rp 13.000<span className="text-sm font-normal text-artisan-slate/50">/kg</span></p>
@@ -274,7 +311,7 @@ export default function App() {
           <div 
             className="w-full lg:w-1/2 h-80 bg-artisan-krem rounded-3xl overflow-hidden relative border-4 border-white shadow-xl flex items-center justify-center group cursor-pointer bg-cover bg-center"
             style={{ backgroundImage: 'url("https://maps.app.goo.gl/yKs3gzkZURYrkea76")' }}
-            onClick={() => window.open('https://maps.google.com/?q=Jl.+Taman+Bahagia,+Benteng,+Kec.+Warudoyong,+Kota+Sukabumi,+Jawa+Barat+43132', '_blank')}
+            onClick={() => window.open('https://maps.app.goo.gl/yKs3gzkZURYrkea76', '_blank')}
           >
             {/* Overlay Gelap Agar Teks Terbaca */}
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
