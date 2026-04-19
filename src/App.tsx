@@ -11,155 +11,173 @@ export default function App() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-artisan-krem text-artisan-slate font-sans selection:bg-artisan-green selection:text-white">
       
-      {/* --- TOP NAVIGATION --- */}
-      <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-artisan-brown/10 bg-artisan-krem/90 backdrop-blur-md px-6 lg:px-10 py-4 shadow-sm">
-        <div className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-10 h-10 bg-white/50 border border-artisan-green/20 rounded-xl flex items-center justify-center text-artisan-green shadow-sm group-hover:bg-artisan-green group-hover:text-white transition-all duration-300">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
-              <path d="M8 12h8M12 8v8"/>
-            </svg>
+      {/* Efek Tekstur Kasat Mata (Linen/Kertas Tipis Vibe) */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }}></div>
+
+      {/* NAVBAR */}
+      <nav className="sticky top-0 z-50 bg-artisan-krem/90 backdrop-blur-md border-b border-artisan-brown/10">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3 cursor-pointer group">
+            {/* Ikon Mangkuk Garis Tipis (Green) */}
+            <div className="w-10 h-10 bg-white/50 border border-artisan-green/20 rounded-xl flex items-center justify-center text-artisan-green shadow-sm group-hover:bg-artisan-green group-hover:text-white transition-all duration-300">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                <path d="M8 12h8M12 8v8"/>
+              </svg>
+            </div>
+            <span className="font-serif text-2xl font-bold tracking-wide text-artisan-brown group-hover:text-artisan-green transition-colors">
+              MieRumah.
+            </span>
           </div>
-          <h2 className="font-serif text-artisan-brown text-2xl font-bold leading-tight tracking-wide group-hover:text-artisan-green transition-colors">
-            MieRumah.
-          </h2>
-        </div>
-        
-        <div className="hidden lg:flex flex-1 justify-end gap-8 items-center">
-          <div className="flex items-center gap-9">
-            <a className="text-artisan-slate font-medium hover:text-artisan-green transition-colors" href="#home">Beranda</a>
-            <a className="text-artisan-slate font-medium hover:text-artisan-green transition-colors" href="#products">Produk</a>
-            <a className="text-artisan-slate font-medium hover:text-artisan-green transition-colors" href="#features">Kualitas</a>
-            <a className="text-artisan-slate font-medium hover:text-artisan-green transition-colors" href="#pricing">Grosir</a>
-            <a className="text-artisan-slate font-medium hover:text-artisan-green transition-colors" href="#lokasi">Lokasi</a>
+          
+          <div className="hidden md:flex gap-8 font-medium text-sm text-artisan-slate/70">
+            <a href="#beranda" className="hover:text-artisan-green transition-colors">Beranda</a>
+            <a href="#produk" className="hover:text-artisan-green transition-colors">Varian</a>
+            <a href="#keunggulan" className="hover:text-artisan-green transition-colors">Keunggulan</a>
           </div>
+
           <button 
             onClick={() => openWA("Halo, saya mau pesan MieRumah!")}
-            className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-full h-11 px-6 bg-artisan-brown hover:bg-[#4a332c] hover:shadow-lg transition-all text-white text-sm font-bold tracking-wide transform hover:-translate-y-0.5"
+            className="bg-artisan-brown text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#4a332c] hover:shadow-lg hover:shadow-artisan-brown/20 transition-all duration-300 transform hover:-translate-y-0.5"
           >
-            Hubungi WhatsApp
+            Pesan Sekarang
           </button>
         </div>
-      </header>
+      </nav>
 
-      {/* --- HERO SECTION --- */}
-      <section className="px-4 py-8 md:px-10 lg:px-20 flex justify-center" id="home">
-        <div className="w-full max-w-[1200px]">
-          <div className="flex min-h-[560px] flex-col gap-6 bg-white rounded-3xl md:gap-8 items-center justify-center p-8 text-center shadow-2xl shadow-artisan-brown/5 relative overflow-hidden border border-white">
-            
-            {/* Latar Belakang Dekoratif (Ganti URL Gambar Nanti) */}
-            <div className="absolute inset-0 bg-artisan-green/5 opacity-50"></div>
-            
-            <div className="flex flex-col gap-5 z-10 max-w-3xl items-center animate-fade-in-up">
-              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-artisan-krem border border-artisan-green/30 text-artisan-green text-xs font-bold uppercase tracking-wider shadow-sm">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                Pilihan No. 1 Pedagang Mie
-              </span>
-              
-              <h1 className="font-serif text-artisan-brown text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight mt-2">
-                Mie Ayam Mentah Premium <br/>
-                <span className="text-artisan-green italic font-normal">Kualitas Pabrik</span>
-              </h1>
-              
-              <p className="text-artisan-slate/80 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto mt-2">
-                Solusi terbaik untuk usaha kuliner Anda. Tanpa pengawet, tekstur kenyal alami, diproduksi harian. Siap antar ke lokasi Anda.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 z-10 mt-4">
-              <button 
-                onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-artisan-brown hover:bg-[#4a332c] hover:shadow-xl hover:shadow-artisan-brown/20 transition-all text-white text-base font-bold transform hover:-translate-y-1"
-              >
-                Lihat Katalog
-              </button>
-              <button 
-                onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-transparent hover:bg-artisan-krem border-2 border-artisan-green/50 text-artisan-green text-base font-bold transition-all"
-              >
-                Harga Grosir
-              </button>
-            </div>
+      {/* HERO SECTION */}
+      <section id="beranda" className="container mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-16 relative z-10">
+        
+        {/* Teks Kiri */}
+        <div className="md:w-1/2 flex flex-col items-start animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 bg-white/60 border border-artisan-green/30 px-4 py-2 rounded-full text-xs font-bold text-artisan-green tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+            Pilihan No. 1 Pedagang Mie
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-serif font-bold leading-[1.1] mb-6 text-artisan-brown">
+            Kelezatan Otentik <br />
+            <span className="text-artisan-green">Mie Artisan</span> <br />
+            di Dapurmu.
+          </h1>
+          
+          <p className="text-lg text-artisan-slate/80 leading-relaxed mb-10 max-w-md">
+            Mie ayam mentah premium tanpa pengawet. Dibuat dengan cinta dan resep rumahan untuk tekstur kenyal sempurna.
+          </p>
+          
+          <div className="flex flex-wrap gap-4">
+            <button 
+              onClick={() => openWA("Halo, saya mau order mie artisan!")}
+              className="bg-artisan-brown text-white px-8 py-4 rounded-xl font-medium shadow-xl shadow-artisan-brown/20 hover:bg-[#4a332c] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group"
+            >
+              Order Sekarang
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <button 
+              onClick={() => document.getElementById("produk")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-transparent text-artisan-green border-2 border-artisan-green/50 px-8 py-4 rounded-xl font-medium hover:bg-artisan-green/10 transition-all duration-300"
+            >
+              Lihat Varian
+            </button>
+          </div>
+        </div>
+
+        {/* Gambar Kanan (Animasi Float) */}
+        <div className="md:w-1/2 relative w-full opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="absolute inset-0 bg-artisan-green/10 rounded-[3rem] transform rotate-3 scale-105 -z-10"></div>
+          
+          <div className="relative w-full aspect-[4/3] bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white animate-float flex flex-col items-center justify-center text-artisan-slate/30">
+             {/* ✏️ Nanti ganti <div> ini dengan <img src="..." /> dari AI */}
+             <svg className="w-16 h-16 mb-4 text-artisan-green/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+             <span className="font-medium text-sm tracking-widest uppercase">Foto Produk AI</span>
+          </div>
+          
+          {/* Badge Melayang */}
+          <div className="absolute -bottom-6 -left-8 bg-white p-4 shadow-xl rounded-2xl border border-gray-100 flex items-center gap-4 hover:scale-110 transition-transform duration-300 cursor-default">
+             <div className="w-12 h-12 bg-artisan-krem rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-artisan-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 13l4 4L19 7"></path></svg>
+             </div>
+             <div>
+               <p className="text-artisan-green font-bold text-sm">100% Halal</p>
+               <p className="text-xs text-artisan-slate/60 font-medium">Tanpa Pengawet</p>
+             </div>
           </div>
         </div>
       </section>
 
-      {/* --- TRUST & SAFETY (KUALITAS) --- */}
-      <section className="px-4 py-16 md:px-10 lg:px-20 flex justify-center" id="features">
-        <div className="w-full max-w-[1200px] flex flex-col gap-12">
-          <div className="flex flex-col gap-4 text-center items-center">
-            <h2 className="font-serif text-artisan-brown text-4xl font-bold leading-tight">
-              Jaminan Kualitas & Keamanan
-            </h2>
-            <p className="text-artisan-slate/80 text-lg max-w-[720px]">
-              Kami mengutamakan kesehatan konsumen Anda dengan standar produksi yang ketat dan transparan.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Sertifikasi Halal", desc: "Bahan baku 100% halal, amanah untuk ketenangan usaha Anda.", icon: <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /> },
-              { title: "Izin Resmi P-IRT", desc: "Terdaftar di Dinas Kesehatan, sangat aman dikonsumsi.", icon: <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /> },
-              { title: "Tanpa Pengawet", desc: "Bebas Formalin & Boraks. Menggunakan tepung protein tinggi.", icon: <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /> },
-              { title: "Fresh Made Daily", desc: "Produksi subuh, kirim pagi. Dijamin fresh sampai di tempat.", icon: <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /> }
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col gap-4 rounded-2xl border border-artisan-brown/10 bg-white p-8 hover:shadow-xl hover:-translate-y-1 hover:border-artisan-green/30 transition-all duration-300">
-                <div className="w-14 h-14 rounded-full bg-artisan-krem flex items-center justify-center text-artisan-green">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">{item.icon}</svg>
-                </div>
-                <div>
-                  <h3 className="font-serif text-artisan-brown text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-artisan-slate/70 text-sm leading-relaxed">{item.desc}</p>
+      {/* DIVIDER */}
+      <div className="container mx-auto px-6 py-12">
+        <div className="flex items-center gap-6 opacity-60">
+          <div className="h-px bg-artisan-brown/20 flex-1"></div>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-artisan-brown/60">4 Varian Terbaik</span>
+          <div className="h-px bg-artisan-brown/20 flex-1"></div>
+        </div>
+      </div>
+
+      {/* SECTION PRODUK */}
+      <section id="produk" className="container mx-auto px-6 py-12 relative z-10">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-serif text-artisan-brown font-bold mb-4">Pilih Favorit Kamu</h2>
+          <p className="text-artisan-slate/70 max-w-lg mx-auto">Dibuat segar setiap hari, siap dimasak dalam 2 menit. Kenyal, gurih, dan pastinya sehat.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((p, index) => (
+            <div key={p.id} className="group bg-white rounded-3xl border border-artisan-brown/10 p-3 shadow-sm hover:shadow-2xl hover:shadow-artisan-green/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="aspect-square rounded-2xl bg-artisan-krem flex items-center justify-center relative overflow-hidden text-artisan-green/40">
+                <svg className="w-16 h-16 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m14 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m14 0H4"></path></svg>
+                <div className="absolute top-3 right-3 bg-white/80 backdrop-blur border border-artisan-green/20 text-[10px] font-bold text-artisan-green px-3 py-1 rounded-full uppercase tracking-wider">
+                  Fresh
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="p-5">
+                <h3 className="font-serif text-2xl font-bold text-artisan-brown mb-2 group-hover:text-artisan-green transition-colors">{p.name}</h3>
+                <p className="text-sm text-artisan-slate/70 line-clamp-2 mb-6">{p.desc}</p>
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-lg text-artisan-green">{p.harga}</div>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); openWA(`Halo, saya mau order ${p.name}!`); }}
+                    className="w-10 h-10 rounded-full bg-artisan-krem border border-artisan-brown/10 flex items-center justify-center text-artisan-brown group-hover:bg-artisan-brown group-hover:text-white transition-colors"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v16m8-8H4"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* --- PRODUCT CATALOG --- */}
-      <section className="px-4 py-16 md:px-10 lg:px-20 flex justify-center bg-white border-y border-artisan-brown/10" id="products">
-        <div className="w-full max-w-[1200px] flex flex-col">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-            <div className="flex flex-col gap-2">
-              <span className="text-artisan-green font-bold uppercase tracking-wider text-sm">Katalog Produk</span>
-              <h2 className="font-serif text-artisan-brown text-4xl font-bold leading-tight">Varian Mie Unggulan</h2>
-            </div>
+      {/* SECTION KEUNGGULAN */}
+      <section id="keunggulan" className="mt-24 bg-[#4a332c] text-white py-24 rounded-t-[3rem] relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-artisan-green font-bold tracking-widest uppercase text-sm mb-4 block">Kualitas Premium</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-artisan-krem">Dibuat Berbeda, Dirasakan Bedanya.</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
             {[
-              { name: "Mie Keriting Premium", price: "Rp 16.000", badge: "Best Seller", desc: "Tekstur kenyal klasik dengan keriting yang sempurna. Favorit pedagang mie ayam gerobakan.", tebal: "1.5mm", isi: "10-12 porsi", emoji: "🍜" },
-              { name: "Mie Lebar (Yamin)", price: "Rp 17.000", badge: "", desc: "Bentuk pipih lebar, cocok untuk menu Mie Yamin manis atau asin. Tekstur lebih halus.", tebal: "3mm", isi: "10-12 porsi", emoji: "🍲" },
-              { name: "Mie Karet Spesial", price: "Rp 18.000", badge: "Unik", desc: "Diameter tebal, tekstur padat, kenyal dan 'al dente'. Sangat cocok untuk mie ayam kampung.", tebal: "2.5mm", isi: "9-10 porsi", emoji: "🥢" }
-            ].map((p, i) => (
-              <div key={i} className="group flex flex-col bg-artisan-krem/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-artisan-brown/10 duration-500">
-                <div className="w-full aspect-[4/3] bg-artisan-krem relative flex items-center justify-center overflow-hidden">
-                   <span className="text-7xl group-hover:scale-125 transition-transform duration-700 opacity-80">{p.emoji}</span>
-                   {p.badge && (
-                     <div className="absolute top-4 right-4 bg-artisan-brown text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
-                       {p.badge}
-                     </div>
-                   )}
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-serif text-artisan-brown text-2xl font-bold leading-tight">{p.name}</h3>
-                  </div>
-                  <p className="text-artisan-green font-bold text-xl mb-4">{p.price}<span className="text-sm font-normal text-artisan-slate/60">/kg</span></p>
-                  <p className="text-artisan-slate/70 text-sm leading-relaxed mb-6 flex-grow">{p.desc}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="px-3 py-1.5 bg-white border border-artisan-brown/10 text-xs text-artisan-brown rounded-lg font-semibold shadow-sm">Tebal: {p.tebal}</span>
-                    <span className="px-3 py-1.5 bg-white border border-artisan-brown/10 text-xs text-artisan-brown rounded-lg font-semibold shadow-sm">Isi: {p.isi}</span>
-                  </div>
-                  <button 
-                    onClick={() => openWA(`Halo, saya mau pesan sampel ${p.name}`)}
-                    className="w-full h-12 rounded-xl border-2 border-artisan-brown text-artisan-brown font-bold hover:bg-artisan-brown hover:text-white transition-all"
-                  >
-                    Pesan Sampel
-                  </button>
-                </div>
+              { 
+                icon: <svg className="w-10 h-10 mb-6 text-artisan-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>, 
+                title: "Bahan Alami", 
+                desc: "Tepung terigu protein tinggi, telur segar, tanpa tambahan pewarna buatan." 
+              },
+              { 
+                icon: <svg className="w-10 h-10 mb-6 text-artisan-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>, 
+                title: "Gilingan Sempurna", 
+                desc: "Rasio adonan rahasia yang menghasilkan tekstur kenyal dan tidak mudah putus." 
+              },
+              { 
+                icon: <svg className="w-10 h-10 mb-6 text-artisan-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>, 
+                title: "Fresh Made to Order", 
+                desc: "Tidak ada stok gudang lama. Pesan hari ini, mie akan digiling hari ini juga." 
+              }
+            ].map((f, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors duration-300">
+                {f.icon}
+                <h3 className="text-xl font-bold mb-4 text-artisan-krem">{f.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -252,11 +270,14 @@ export default function App() {
       <section className="px-4 py-16 md:px-10 lg:px-20 flex justify-center bg-white border-b border-artisan-brown/10" id="lokasi">
         <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-12 items-center">
           
-          {/* Kotak Peta Lokasi */}
-          <div className="w-full lg:w-1/2 h-80 bg-artisan-krem rounded-3xl overflow-hidden relative border-4 border-white shadow-xl flex items-center justify-center group cursor-pointer">
-            <div className="absolute inset-0 bg-artisan-green/10 group-hover:bg-artisan-green/5 transition-colors duration-500"></div>
-            {/* Ikon Peta Estetik */}
-            <svg className="w-32 h-32 text-artisan-brown/20 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+          {/* Kotak Peta Lokasi (Diperbarui dengan Maps Google) */}
+          <div 
+            className="w-full lg:w-1/2 h-80 bg-artisan-krem rounded-3xl overflow-hidden relative border-4 border-white shadow-xl flex items-center justify-center group cursor-pointer bg-cover bg-center"
+            style={{ backgroundImage: 'url("https://maps.app.goo.gl/yKs3gzkZURYrkea76")' }}
+            onClick={() => window.open('https://maps.google.com/?q=Jl.+Taman+Bahagia,+Benteng,+Kec.+Warudoyong,+Kota+Sukabumi,+Jawa+Barat+43132', '_blank')}
+          >
+            {/* Overlay Gelap Agar Teks Terbaca */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
             
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-white px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 transform group-hover:-translate-y-2 transition-transform duration-300">
@@ -265,7 +286,7 @@ export default function App() {
                 </div>
                 <div>
                   <span className="font-bold text-artisan-brown block">Lokasi Pabrik Kami</span>
-                  <span className="text-sm text-artisan-slate/60">Jakarta & Sekitarnya</span>
+                  <span className="text-sm text-artisan-slate/60">Kota Sukabumi (Klik untuk Buka Map)</span>
                 </div>
               </div>
             </div>
@@ -335,7 +356,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- FOOTER --- */}
+      {/* --- FOOTER (Diperbarui dengan Alamat Sukabumi) --- */}
       <footer className="bg-artisan-brown text-white pt-20 pb-10 px-4 md:px-10 lg:px-20 flex justify-center rounded-t-[3rem]">
         <div className="w-full max-w-[1200px] flex flex-col">
           <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
@@ -373,7 +394,7 @@ export default function App() {
                 </div>
                 <div className="flex gap-3 text-sm text-white/70 items-start">
                   <svg className="w-5 h-5 text-artisan-green shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                  <span className="leading-relaxed">DKI Jakarta & Sekitarnya</span>
+                  <span className="leading-relaxed">Jl. Taman Bahagia, Benteng, Kec. Warudoyong, Kota Sukabumi, Jawa Barat 43132</span>
                 </div>
               </div>
             </div>
