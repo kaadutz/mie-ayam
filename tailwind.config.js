@@ -7,11 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'artisan-bg': '#FFFDF9', 
-        'artisan-text': '#2C2724', 
-        'artisan-primary': '#D97706', 
-        'artisan-green': '#4D7C0F', 
-        'artisan-surface': '#F4EFE6', 
+        'artisan-krem': '#F5F5DC', // Background Utama
+        'artisan-green': '#27AE60', // Aksen, Ikon, Tombol Sekunder
+        'artisan-brown': '#5D4037', // Tombol Utama (CTA)
+        'artisan-slate': '#2C3E50', // Teks Body
       },
       fontFamily: {
         'serif': ['"DM Serif Display"', 'serif'],
